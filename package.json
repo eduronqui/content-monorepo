@@ -1,0 +1,55 @@
+{
+  "name": "project-name",
+  "version": "1.0.0",
+  "description": "project-description",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:clean": "npm run clean && tsc",
+    "clean": "rimraf ./dist/",
+    "commit": "cz",
+    "lint": "eslint src/**/*.ts",
+    "lint:fix": "npm run lint -- --fix",
+    "prepare": "husky install",
+    "start:dev": "nodemon src/index.ts",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": ["typescript"],
+  "author": "Eduardo Ronqui da silva <edu.ronqui@gmail.com>",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/eduronqui/project-name/issues"
+  },
+  "homepage": "https://github.com/eduronqui/project-name#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eduronqui/project-name"
+  },
+  "engines": {
+    "node": ">=16.14.0",
+    "npm": ">=8.3.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "@types/node": "^17.0.17",
+    "@typescript-eslint/eslint-plugin": "^5.11.0",
+    "@typescript-eslint/parser": "^5.11.0",
+    "commitizen": "^4.2.4",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.8.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^7.0.0",
+    "jest": "^27.5.1",
+    "nodemon": "^2.0.15",
+    "prettier": "^2.5.1",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^27.1.3",
+    "typescript": "^4.5.5"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "#100DaysOfCode challenge project monorepo",
   "scripts": {
+    "build:changed": "lerna run build --since main",
     "commit": "cz",
     "prepare": "./bin/prepare",
     "test:changed": "lerna run test --since main"

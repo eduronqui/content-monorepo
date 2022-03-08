@@ -1,8 +1,8 @@
 {
   "packages": [
-    "src/packages/*",
-    "src/services/*",
-    "src/web/*"
+    "packages/*",
+    "services/*",
+    "web/*"
   ],
   "version": "0.0.1",
   "npmClient": "npm"

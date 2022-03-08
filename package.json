@@ -35,11 +35,6 @@
     "lerna": "^4.0.0",
     "typescript": "^4.6.2"
   },
-  "workspaces": [
-    "packages/*",
-    "services/*",
-    "web/*"
-  ],
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"

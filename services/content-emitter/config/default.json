@@ -1,0 +1,7 @@
+{
+  "service": "content-emitter",
+  "kafka": {
+    "topic": "cnt-index-movie",
+    "brokers": []
+  }
+}

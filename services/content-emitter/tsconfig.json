@@ -2,6 +2,16 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./dist"
-  }
+    "outDir": "./dist",
+    // ts-node does not recognizes automatically the ./typings folder
+    // and some (a lot of) type augmentation is needed for fastify
+    // https://github.com/TypeStrong/ts-node#help-my-types-are-missing
+    "typeRoots" : [
+      "./node_modules/@types",
+      "./typings"
+    ],
+  },
+  "include": [
+    "./src/**/*.ts"
+  ]
 }

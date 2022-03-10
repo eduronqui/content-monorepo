@@ -5,6 +5,7 @@
   "scripts": {
     "build:changed": "lerna run build --since main",
     "commit": "cz",
+    "lerna:exec:changed": "lerna --since main exec",
     "prepare": "./bin/prepare",
     "test:changed": "lerna run test --since main"
   },

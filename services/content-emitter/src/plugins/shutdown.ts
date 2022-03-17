@@ -1,7 +1,7 @@
-import { FastifyInstance } from "fastify"
+import { FastifyInstance } from 'fastify'
 
 export async function shutdown(fastify: FastifyInstance) {
-  fastify.get('/shutdown', async (request, reply) => {
+  fastify.post('/shutdown', async (request, reply) => {
     request.log.info('Shutdown requested')
 
     reply.type('text').status(202)

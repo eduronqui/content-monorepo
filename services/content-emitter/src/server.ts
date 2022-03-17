@@ -1,7 +1,8 @@
-import { randomUUID } from 'crypto';
+import { randomUUID } from 'crypto'
 import Fastify from 'fastify'
 import { bootstrapPlugins } from './plugins'
 import { bootstrapHooks } from './hooks'
+import { bootstrapHandlers } from './handlers'
 
 export async function bootstrap() {
   const server = Fastify({
@@ -11,6 +12,7 @@ export async function bootstrap() {
 
   server.register(bootstrapPlugins())
   server.register(bootstrapHooks())
+  server.register(bootstrapHandlers())
 
   server.get('/', async (request, reply) => {
     reply.type('application/json').code(200)

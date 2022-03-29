@@ -5,7 +5,8 @@
   "author": "Eduardo Ronqui da Silva <edu.ronqui@gmail.com>",
   "homepage": "https://eduronqui.github.io/one-hundred-days-of-code/tree/main/packages/correlation-id#readme",
   "license": "ISC",
-  "main": "dist/index.js",
+  "main": "dist/correlationId.js",
+  "types": "./dist/correlationId.d.ts",
   "directories": {
     "lib": "dist"
   },

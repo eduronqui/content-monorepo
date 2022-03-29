@@ -30,6 +30,7 @@
   },
   "homepage": "https://github.com/eduronqui/content-monorepo#readme",
   "dependencies": {
+    "@cts/correlation-id": "file:../../packages/correlation-id",
     "@sinclair/typebox": "^0.23.4",
     "config": "^3.3.7",
     "fastify": "^3.27.3",

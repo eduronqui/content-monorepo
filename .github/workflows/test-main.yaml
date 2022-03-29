@@ -1,0 +1,22 @@
+name: Test main
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test-main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+      - run: npm install && ./node_modules/lerna/cli.js exec -- npm ci
+
+      - run: ./node_modules/lerna/cli.js run build
+
+      - run: ./node_modules/lerna/cli.js run test

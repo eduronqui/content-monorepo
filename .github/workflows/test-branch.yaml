@@ -1,6 +1,10 @@
 name: Test branch
 
-on: [push, pull_request]
+on:
+  pull_request:
+  push:
+    branches-ignore:
+      - main
 
 jobs:
   test-branch:
@@ -12,9 +16,7 @@ jobs:
         with:
           node-version: '16.x'
 
-      - run: npm ci
-
-      - run: npm run lerna:exec:changed -- npm ci
+      - run: npm install && npm run lerna:exec:changed -- npm ci
 
       - run: npm run build:changed
 

@@ -14,13 +14,13 @@ type BodyType = Static<typeof bodySchema>
 
 export function publish(server: FastifyInstance) {
   server.post<{
-    Body: BodyType,
+    Body: BodyType
   }>('/publish', { schema: { body: bodySchema } }, async (request, reply) => {
     reply.type('application/json').code(202)
 
     const { contentId, contentType } = request.body
 
-    const kafkaConfig = (request as any).config.get('kafka') as any
+    const kafkaConfig = request.config.get('kafka') as any
 
     const producer = KafkaClient(kafkaConfig).producer()
     await producer.connect()

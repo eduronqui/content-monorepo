@@ -1,18 +1,18 @@
-import { randomUUID } from 'crypto'
-import Fastify, { fastify } from 'fastify'
+import Fastify from 'fastify'
 import { bootstrapPlugins } from './plugins'
 import { bootstrapHooks } from './hooks'
 import { bootstrapHandlers } from './handlers'
 import { KafkaClient } from './clients'
 import config from 'config'
-import fp from 'fastify-plugin'
+import { genReqId, correlationIdPlugin } from '@cts/correlation-id'
 
 export async function bootstrap() {
   const server = Fastify({
     logger: true,
-    genReqId: () => randomUUID({ disableEntropyCache: false })
+    genReqId
   })
 
+  server.register(correlationIdPlugin())
   server.register(bootstrapPlugins())
   server.register(bootstrapHooks())
   server.register(bootstrapHandlers())

@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "#100DaysOfCode challenge project monorepo",
   "scripts": {
-    "build:changed": "lerna run build --since main",
+    "build:changed": "lerna run build --since origin/main",
     "commit": "cz",
-    "lerna:exec:changed": "lerna --since main exec",
+    "lerna:exec:changed": "lerna --since origin/main exec",
     "prepare": "./bin/prepare",
-    "test:changed": "lerna run test --since main"
+    "test:changed": "lerna run test --since origin/main"
   },
   "keywords": [
     "typescript",

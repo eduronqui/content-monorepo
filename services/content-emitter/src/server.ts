@@ -4,12 +4,12 @@ import { bootstrapHooks } from './hooks'
 import { bootstrapHandlers } from './handlers'
 import { KafkaClient } from './clients'
 import config from 'config'
-import { genReqId, correlationIdPlugin } from '@cts/correlation-id'
+import { generateRequestId, correlationIdPlugin } from '@cts/correlation-id'
 
 export async function bootstrap() {
   const server = Fastify({
     logger: true,
-    genReqId
+    genReqId: generateRequestId
   })
 
   server.register(correlationIdPlugin())

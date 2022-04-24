@@ -3,7 +3,7 @@ import { randomUUID } from 'crypto'
 
 const CORRELATION_ID = 'x-correlation-id'
 
-export function genReqId() {
+export function generateRequestId() {
   return randomUUID()
 }
 

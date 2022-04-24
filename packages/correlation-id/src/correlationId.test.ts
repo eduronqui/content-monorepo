@@ -1,10 +1,10 @@
-import { genReqId, correlationIdPlugin } from './correlationId'
+import { generateRequestId, correlationIdPlugin } from './correlationId'
 import fastify, { FastifyInstance } from 'fastify'
 
 describe('correlationId', () => {
-  describe('genReqId', () => {
+  describe('generateRequestId', () => {
     it('should generate a uuid', () => {
-      const reqId = genReqId()
+      const reqId = generateRequestId()
 
       expect(reqId).not.toBeNull()
       expect(reqId).toMatch(/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/gi)
@@ -16,7 +16,7 @@ describe('correlationId', () => {
 
     beforeEach(() => {
       server = fastify({
-        genReqId
+        genReqId: generateRequestId
       })
       server.register(correlationIdPlugin())
       server.get('/', async () => {
@@ -42,6 +42,26 @@ describe('correlationId', () => {
 
       expect(headers['x-correlation-id']).not.toBeNull()
       expect(headers['x-correlation-id']).toEqual('12345')
+    })
+
+    it('should have x-correlation-id available on request handler', (done) => {
+      server.get('/test', async ({ headers }, reply) => {
+        expect(headers['x-correlation-id']).not.toBeNull()
+        expect(headers['x-correlation-id']).toEqual('1234')
+        reply.send()
+      })
+
+      server
+        .inject({
+          method: 'GET',
+          path: '/',
+          headers: {
+            'x-correlation-id': '12345'
+          }
+        })
+        .then(() => {
+          done()
+        })
     })
   })
 })

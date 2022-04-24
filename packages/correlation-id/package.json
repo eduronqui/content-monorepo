@@ -1,6 +1,6 @@
 {
   "name": "@cts/correlation-id",
-  "version": "0.0.1",
+  "version": "0.2.0",
   "description": "Add correlation-id to requests",
   "author": "Eduardo Ronqui da Silva <edu.ronqui@gmail.com>",
   "homepage": "https://eduronqui.github.io/one-hundred-days-of-code/tree/main/packages/correlation-id#readme",
@@ -22,7 +22,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "postinstall": "npm run build"
   },
   "bugs": {
     "url": "https://github.com/eduronqui/content-monorepo/issues"

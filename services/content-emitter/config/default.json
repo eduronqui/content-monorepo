@@ -2,6 +2,7 @@
   "service": "content-emitter",
   "kafka": {
     "topic": "cnt-index-movie",
+    "clientId": "content-emitter",
     "brokers": []
   }
 }

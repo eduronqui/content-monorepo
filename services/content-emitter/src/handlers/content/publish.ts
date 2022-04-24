@@ -1,6 +1,8 @@
 import { FastifyInstance } from 'fastify'
 import { Static, Type } from '@sinclair/typebox'
 import { KafkaClient } from '../../clients'
+import config from 'config'
+import { stringify } from 'querystring'
 
 const bodySchema = Type.Object(
   {
@@ -14,18 +16,18 @@ type BodyType = Static<typeof bodySchema>
 
 export function publish(server: FastifyInstance) {
   server.post<{
-    Body: BodyType,
+    Body: BodyType
   }>('/publish', { schema: { body: bodySchema } }, async (request, reply) => {
     reply.type('application/json').code(202)
 
     const { contentId, contentType } = request.body
 
-    const kafkaConfig = (request as any).config.get('kafka') as any
+    const kafkaConfig = config.get<{ clientId: string, topic: string; brokers: string[] }>('kafka')
 
     const producer = KafkaClient(kafkaConfig).producer()
     await producer.connect()
     await producer.send({
-      topic: 'foo-topic',
+      topic: kafkaConfig.topic,
       messages: [
         {
           key: 'content:index',
